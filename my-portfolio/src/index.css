@@ -66,3 +66,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@keyframes wiggle {
+  0% { rotate: -2deg; }
+  50% { rotate: 2deg; }
+  100% { rotate: -2deg; }
+}
