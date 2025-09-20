@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import BasicCard from "../../components/BasicCard";
 import { DndContext } from "@dnd-kit/core";
-import { Grid } from "@mui/material";
 import DraggableCard from "../../components/DragnDropComponents/DraggableCard";
 import Slot from "../../components/DragnDropComponents/DroppableSlot";
 import Canvas from "../../components/DragnDropComponents/Canvas";
 import { dragnDropStyles } from "./DragnDropStyles";
+import CardPool from "../../components/CardPoolComponents/CardPool";
 
 function DragNDrop() {
   const [pool, setPool] = useState([
@@ -91,31 +91,9 @@ function DragNDrop() {
             ))}
           </Canvas>
         </Box>
-        <Box 
-          data-testid="card-pool-section"
-          sx={dragnDropStyles.cardPoolSection}
-        >
-          <Typography 
-            data-testid="card-pool-title"
-            variant="h6" 
-            sx={dragnDropStyles.cardPoolTitle}
-          >
-            Card Pool
-          </Typography>
-          <Box 
-            data-testid="card-pool-container"
-            sx={dragnDropStyles.cardPoolContainer}
-          >
-            {pool.map((card) => (
-              <DraggableCard
-                key={card.id}
-                id={card.id}
-                content={card.content}
-                isOnCanvas={false}
-              />
-            ))}
-          </Box>
-        </Box>
+        <CardPool 
+          pool={pool}
+        />
       </Box>
     </DndContext>
   );

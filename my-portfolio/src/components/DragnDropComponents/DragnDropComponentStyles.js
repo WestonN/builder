@@ -1,13 +1,32 @@
 // Canvas Component Styles
 export const canvasStyles = {
     droppableArea: {
-      border: "10px solid gray",
+    //   border: "10px solid gray",
       height: "100%",
       width: "100%",
       position: "relative",
       overflow: "hidden",
-      backgroundColor: "#f5f5f5",
-      borderRadius: '25px'
+    //   backgroundColor: "#f5f5f5",
+    //   borderRadius: '25px'
+
+    //   background: "#fffdfa", // warm white
+    //   border: "2px solid #e0e0e0",
+    //   borderRadius: "8px",
+    //   boxShadow: "0 4px 8px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.05)",
+    //   padding: "16px",
+    //   backgroundImage: "radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px)",
+    //   backgroundSize: "20px 20px", 
+
+    background: "#3f3f3f", // dark slate base
+    border: "2px solid #333",
+    borderRadius: "8px",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.05)",
+    padding: "16px",
+    // minHeight: "400px",
+    // width: "100%",
+    backgroundImage: "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)",
+    backgroundSize: "20px 20px",
+    color: "#f0f0f0" // text is still readable
     }
   };
   
