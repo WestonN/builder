@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
-import BasicCard from "../components/BasicCard";
+import BasicCard from "../../components/BasicCard";
 import { DndContext } from "@dnd-kit/core";
 import { Grid } from "@mui/material";
-import DraggableCard from "../components/DraggableCard";
-import Slot from "../components/DroppableSlot";
-import Canvas from "../components/Canvas";
+import DraggableCard from "../../components/DragnDropComponents/DraggableCard";
+import Slot from "../../components/DragnDropComponents/DroppableSlot";
+import Canvas from "../../components/DragnDropComponents/Canvas";
+import { dragnDropStyles } from "./DragnDropStyles";
 
 function DragNDrop() {
   const [pool, setPool] = useState([
@@ -69,9 +70,14 @@ function DragNDrop() {
   */
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100%', padding: '10px' }}>
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          <Typography variant="h6" sx={{ mb: 2 }}>Canvas Area</Typography>
+      <Box 
+        data-testid="drag-drop-main-container"
+        sx={dragnDropStyles.mainContainer}
+      >
+        <Box 
+          data-testid="canvas-section"
+          sx={dragnDropStyles.canvasSection}
+        >
           <Canvas sx={{ flex: 1 }}>
             {canvasCards.map((card) => (
               <DraggableCard
@@ -85,16 +91,21 @@ function DragNDrop() {
             ))}
           </Canvas>
         </Box>
-        <Box sx={{ flex: 1 }}>
-          <Typography variant="h6" sx={{ mb: 2 }}>Card Pool</Typography>
-          <Box sx={{ 
-            display: "flex", 
-            gap: 2, 
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start'
-          }}>
+        <Box 
+          data-testid="card-pool-section"
+          sx={dragnDropStyles.cardPoolSection}
+        >
+          <Typography 
+            data-testid="card-pool-title"
+            variant="h6" 
+            sx={dragnDropStyles.cardPoolTitle}
+          >
+            Card Pool
+          </Typography>
+          <Box 
+            data-testid="card-pool-container"
+            sx={dragnDropStyles.cardPoolContainer}
+          >
             {pool.map((card) => (
               <DraggableCard
                 key={card.id}

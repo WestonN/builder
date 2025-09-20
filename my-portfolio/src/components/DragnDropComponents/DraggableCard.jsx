@@ -3,6 +3,7 @@ import {
   useDraggable,
 } from "@dnd-kit/core";
 import { Card, CardContent, Typography } from "@mui/material";
+import { draggableCardStyles } from "./DragnDropComponentStyles";
 
 export default function DraggableCard({ id, content, x, y, isOnCanvas }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
@@ -14,7 +15,7 @@ export default function DraggableCard({ id, content, x, y, isOnCanvas }) {
     : "";
 
   // Tilt / wiggle styles when dragging
-  const dragStyle = isDragging
+  const dragStyle = isDragging && !isOnCanvas
     ? {
         transform: `${dragTransform} rotate(5deg) scale(1.05)`,
         animation: "wiggle 0.3s infinite ease-in-out",
@@ -22,20 +23,24 @@ export default function DraggableCard({ id, content, x, y, isOnCanvas }) {
       }
     : { transform: dragTransform };
 
+  const baseStyle = isOnCanvas ? draggableCardStyles.card : draggableCardStyles.cardPool;
   const style = {
-    position: isOnCanvas ? "absolute" : "relative",
+    ...baseStyle,
     left: isOnCanvas ? x : undefined,
     top: isOnCanvas ? y : undefined,
-    cursor: "grab",
-    width: 100,
     ...dragStyle,
   };
 
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      <Card>
-        <CardContent>
-          <Typography align="center">{content}</Typography>
+      <Card data-testid={`draggable-card-${id}`}>
+        <CardContent data-testid={`draggable-card-content-${id}`}>
+          <Typography 
+            data-testid={`draggable-card-text-${id}`}
+            align="center"
+          >
+            {content}
+          </Typography>
         </CardContent>
       </Card>
     </div>
