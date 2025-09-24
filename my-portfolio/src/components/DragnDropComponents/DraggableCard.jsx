@@ -33,13 +33,13 @@ export default function DraggableCard({ id, content, x, y, isOnCanvas }) {
 
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      <Card data-testid={`draggable-card-${id}`}>
+      <Card sx={draggableCardStyles.cardContent} data-testid={`draggable-card-${id}`}>
         <CardContent data-testid={`draggable-card-content-${id}`}>
           <Typography 
             data-testid={`draggable-card-text-${id}`}
             align="center"
           >
-            {content}
+            {content?.name}
           </Typography>
         </CardContent>
       </Card>

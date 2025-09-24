@@ -35,15 +35,19 @@ export const canvasStyles = {
     card: {
       position: "absolute", // or "relative" based on isOnCanvas
       cursor: "grab",
-      width: 100
+      width: 200,
+      height: 200,
     },
     cardPool: {
       position: "relative",
       cursor: "grab",
-      width: 100
+      width: 200,
+      height: 200,
     },
     cardContent: {
       // Add any specific card content styles here
+      height: 200,
+      width: 200,
     },
     cardText: {
       // Add any specific text styles here

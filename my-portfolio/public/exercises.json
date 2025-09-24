@@ -1,0 +1,20 @@
+{
+    "ring_dip": {
+        "name": "Ring Dip"
+    },
+    "pull_up": {
+        "name": "Pull-up"
+    },
+    "deficit_push_up": {
+        "name": "Deficit Push-up"
+    },
+    "deficit_pike_press": {
+        "name": "Deficit Pike-press"
+    },
+    "bulgarian_split_squat": {
+        "name": "Bulgarian Split Squat"
+    },
+    "nordic_curl": {
+        "name": "Nordic Curl"
+    }
+}

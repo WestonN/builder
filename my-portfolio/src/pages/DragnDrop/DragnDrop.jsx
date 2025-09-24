@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { Box, Container, Typography } from "@mui/material";
-import BasicCard from "../../components/BasicCard";
+import React, { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 import { DndContext } from "@dnd-kit/core";
 import DraggableCard from "../../components/DragnDropComponents/DraggableCard";
-import Slot from "../../components/DragnDropComponents/DroppableSlot";
 import Canvas from "../../components/DragnDropComponents/Canvas";
 import { dragnDropStyles } from "./DragnDropStyles";
 import CardPool from "../../components/CardPoolComponents/CardPool";
+import get_exercises from "../../test_data_retrieval/get_exercises";
 
 function DragNDrop() {
   const [pool, setPool] = useState([
@@ -26,6 +25,19 @@ function DragNDrop() {
   ]);
 
   const [canvasCards, setCanvasCards] = useState([]);
+
+  useEffect(() => {
+    const fetchExercises = async () => {
+      console.log('wat',await get_exercises())
+      const exercises = await get_exercises()
+      const exercisePool = Object.entries(exercises).map(([key, value]) => ({
+        id: key,
+        content: value
+      }))
+      setPool(exercisePool)
+    };
+    fetchExercises();
+  }, [])
 
   const handleDragEnd = (event) => {
     const { over, active } = event;
